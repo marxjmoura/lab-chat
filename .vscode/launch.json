@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Lab.Chat",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build:Lab.Chat",
+      "program": "${workspaceFolder}/src/Lab.Chat/bin/Debug/netcoreapp3.1/Lab.Chat.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/Lab.Chat",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      }
+    }
+  ]
+}
