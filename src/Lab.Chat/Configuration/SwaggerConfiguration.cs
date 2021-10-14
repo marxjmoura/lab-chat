@@ -46,6 +46,8 @@ namespace Lab.Chat.Configuration
                         new[] { "readAccess", "writeAccess" }
                     }
                 });
+
+                options.IncludeXmlComments(xmlComments);
             });
         }
 
