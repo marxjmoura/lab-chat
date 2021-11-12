@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Lab.Chat
 {
-    public class Program
+    public class LocalEntryPoint
     {
         public static void Main(string[] args)
         {

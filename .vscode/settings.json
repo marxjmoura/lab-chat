@@ -28,5 +28,14 @@
   },
   "[sql]": {
     "editor.tabSize": 4
+  },
+  "rest-client.environmentVariables": {
+    "$shared": {},
+    "local": {
+      "baseUrl": "http://localhost:5000"
+    },
+    "dev": {
+      "baseUrl": "https://ksx9cqigdj.execute-api.us-east-1.amazonaws.com/dev"
+    }
   }
 }
