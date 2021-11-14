@@ -1,2 +1,11 @@
 GET {{baseUrl}}/messages
 Content-Type: application/json
+
+###
+
+POST {{baseUrl}}/messages
+Content-Type: application/json
+
+{
+  "content": "Olá! Tudo bem?"
+}

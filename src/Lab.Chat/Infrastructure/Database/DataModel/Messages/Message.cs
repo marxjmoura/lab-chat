@@ -20,7 +20,7 @@ namespace Lab.Chat.Infrastructure.Database.DataModel.Messages
         [DynamoDBProperty]
         public string Content { get; set; }
 
-        [DynamoDBProperty(typeof(BoolConverter))]
+        [DynamoDBProperty(typeof(DateTimeOffsetConverter))]
         public DateTimeOffset SentOn { get; set; }
     }
 }

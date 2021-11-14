@@ -13,5 +13,11 @@ namespace Lab.Chat.Infrastructure.Database.DataModel.Messages
         public string PK { get; }
 
         public string SK { get; }
+
+        public void AssignTo(Message message)
+        {
+            message.PK = PK;
+            message.SK = SK;
+        }
     }
 }
