@@ -3,7 +3,7 @@ using System.Net.Mime;
 using System.Threading.Tasks;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
-using Lab.Chat.Features;
+using Lab.Chat.Features.Messages;
 using Lab.Chat.Infrastructure.Database.DataModel.Messages;
 using Lab.Chat.Infrastructure.Serialization.Messages;
 using Lab.Chat.Models.Messages;

@@ -4,7 +4,7 @@ using Amazon.DynamoDBv2.DataModel;
 using Lab.Chat.Infrastructure.Database.DataModel.Messages;
 using NUlid;
 
-namespace Lab.Chat.Features
+namespace Lab.Chat.Features.Messages
 {
     public class MessageSending
     {

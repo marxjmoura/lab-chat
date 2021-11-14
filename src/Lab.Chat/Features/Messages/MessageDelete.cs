@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using Amazon.DynamoDBv2.DataModel;
 using Lab.Chat.Infrastructure.Database.DataModel.Messages;
 
-namespace Lab.Chat.Features
+namespace Lab.Chat.Features.Messages
 {
     public class MessageDelete
     {
