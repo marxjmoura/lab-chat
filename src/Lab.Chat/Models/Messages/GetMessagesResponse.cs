@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace Lab.Chat.Models.Messages
 {
-    public class ListMessageResponse
+    public class GetMessagesResponse
     {
         /// <summary>
         /// Message list.
         /// </summary>
-        public ICollection<MessageResponse> Messages { get; set; }
+        public IEnumerable<MessageResponse> Messages { get; set; }
     }
 }

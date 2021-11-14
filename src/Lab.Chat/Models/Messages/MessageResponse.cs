@@ -17,6 +17,6 @@ namespace Lab.Chat.Models.Messages
         /// <summary>
         /// Date/time when the message was sent.
         /// </summary>
-        public DateTime SentOn { get; set; }
+        public DateTimeOffset SentOn { get; set; }
     }
 }
