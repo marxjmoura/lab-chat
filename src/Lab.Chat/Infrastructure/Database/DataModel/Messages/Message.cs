@@ -22,5 +22,8 @@ namespace Lab.Chat.Infrastructure.Database.DataModel.Messages
 
         [DynamoDBProperty(typeof(DateTimeOffsetConverter))]
         public DateTimeOffset SentOn { get; set; }
+
+        [DynamoDBProperty(typeof(DateTimeOffsetConverter))]
+        public DateTimeOffset? UpdatedOn { get; set; }
     }
 }

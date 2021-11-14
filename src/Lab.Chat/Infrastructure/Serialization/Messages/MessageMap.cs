@@ -11,7 +11,8 @@ namespace Lab.Chat.Infrastructure.Serialization.Messages
             {
                 Id = message.Id.ToString(),
                 Content = message.Content,
-                SentOn = message.SentOn
+                SentOn = message.SentOn,
+                UpdatedOn = message.UpdatedOn
             };
         }
     }

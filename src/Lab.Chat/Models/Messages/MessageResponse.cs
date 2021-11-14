@@ -18,5 +18,10 @@ namespace Lab.Chat.Models.Messages
         /// Date/time when the message was sent.
         /// </summary>
         public DateTimeOffset SentOn { get; set; }
+
+        /// <summary>
+        /// Date/time when the message was updated.
+        /// </summary>
+        public DateTimeOffset? UpdatedOn { get; set; }
     }
 }
