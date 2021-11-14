@@ -121,5 +121,31 @@ namespace Lab.Chat.Controllers
 
             return Ok(message.MapToResponse());
         }
+
+        /// <summary>
+        /// Delete message
+        /// </summary>
+        /// <remarks>
+        /// Delete a message for everyone.
+        /// </remarks>
+        [HttpDelete, Route("{messageId}")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(MessageResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(MessageNotFoundError), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Delete([FromRoute] Ulid messageId)
+        {
+            var messageSearch = new MessageSearch(_dbContext);
+            var message = await messageSearch.Find(UserId, messageId);
+
+            if (messageSearch.MessageNotFound)
+            {
+                return NotFound(new MessageNotFoundError(messageId.ToString()));
+            }
+
+            var messageDelete = new MessageDelete(_dbContext);
+            await messageDelete.Delete(message);
+
+            return Ok(message.MapToResponse());
+        }
     }
 }

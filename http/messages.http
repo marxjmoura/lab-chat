@@ -25,3 +25,8 @@ Content-Type: application/json
 {
   "content": "Olá! Tudo bem??"
 }
+
+###
+
+DELETE {{baseUrl}}/messages/{{messageId}}
+Content-Type: application/json
