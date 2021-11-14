@@ -5,6 +5,11 @@ Content-Type: application/json
 
 ###
 
+GET {{baseUrl}}/messages/{{messageId}}
+Content-Type: application/json
+
+###
+
 POST {{baseUrl}}/messages
 Content-Type: application/json
 

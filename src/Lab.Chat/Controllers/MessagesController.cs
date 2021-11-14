@@ -26,6 +26,55 @@ namespace Lab.Chat.Controllers
         }
 
         /// <summary>
+        /// Find message
+        /// </summary>
+        /// <remarks>
+        /// Find a message by ID.
+        /// </remarks>
+        [HttpGet, Route("{messageId}")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(MessageResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(MessageNotFoundError), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Find([FromRoute] Ulid messageId)
+        {
+            var messageSearch = new MessageSearch(_dbContext);
+            var message = await messageSearch.Find(UserId, messageId);
+
+            if (messageSearch.MessageNotFound)
+            {
+                return NotFound(new MessageNotFoundError(messageId.ToString()));
+            }
+
+            return Ok(message.MapToResponse());
+        }
+
+        /// <summary>
+        /// Get messages
+        /// </summary>
+        /// <remarks>
+        /// Direct message sent from one user to another user or group.
+        /// </remarks>
+        [HttpGet]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(GetMessagesResponse), StatusCodes.Status200OK)]
+        public async Task<IActionResult> List([FromQuery] GetMessagesQuery queryString)
+        {
+            var query = new MessageQuery();
+            query.UserId = UserId;
+            query.BeforeMessage = queryString.Before ?? Ulid.NewUlid();
+            query.Length = queryString.Length ?? 30;
+
+            var messages = await _dbContext
+                .FromQueryAsync<Message>(query.ToDynamoDBQuery())
+                .GetRemainingAsync();
+
+            return Ok(new GetMessagesResponse
+            {
+                Messages = messages.Select(message => message.MapToResponse())
+            });
+        }
+
+        /// <summary>
         /// Create message
         /// </summary>
         /// <remarks>
@@ -71,32 +120,6 @@ namespace Lab.Chat.Controllers
             await messageUpdate.Update(message);
 
             return Ok(message.MapToResponse());
-        }
-
-        /// <summary>
-        /// Get messages
-        /// </summary>
-        /// <remarks>
-        /// Direct message sent from one user to another user or group.
-        /// </remarks>
-        [HttpGet]
-        [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(GetMessagesResponse), StatusCodes.Status200OK)]
-        public async Task<IActionResult> List([FromQuery] GetMessagesQuery queryString)
-        {
-            var query = new MessageQuery();
-            query.UserId = UserId;
-            query.BeforeMessage = queryString.Before ?? Ulid.NewUlid();
-            query.Length = queryString.Length ?? 30;
-
-            var messages = await _dbContext
-                .FromQueryAsync<Message>(query.ToDynamoDBQuery())
-                .GetRemainingAsync();
-
-            return Ok(new GetMessagesResponse
-            {
-                Messages = messages.Select(message => message.MapToResponse())
-            });
         }
     }
 }
