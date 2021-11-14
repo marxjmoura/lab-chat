@@ -31,6 +31,9 @@ namespace Lab.Chat.Controllers
         /// <remarks>
         /// Find a message by ID.
         /// </remarks>
+        /// <param name="messageId">
+        /// Message unique identifier.
+        /// </param>
         [HttpGet, Route("{messageId}")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(MessageResponse), StatusCodes.Status200OK)]
@@ -99,6 +102,12 @@ namespace Lab.Chat.Controllers
         /// <remarks>
         /// Update a message alerady sent to another user or group.
         /// </remarks>
+        /// <param name="messageId">
+        /// Message unique identifier.
+        /// </param>
+        /// <param name="putMessageRequest">
+        /// Message that will be updated.
+        /// </param>
         [HttpPut, Route("{messageId}")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(MessageResponse), StatusCodes.Status200OK)]
@@ -128,6 +137,9 @@ namespace Lab.Chat.Controllers
         /// <remarks>
         /// Delete a message for everyone.
         /// </remarks>
+        /// <param name="messageId">
+        /// Message unique identifier.
+        /// </param>
         [HttpDelete, Route("{messageId}")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(MessageResponse), StatusCodes.Status200OK)]
