@@ -7,9 +7,9 @@ namespace Lab.Chat.Features.Messages
 {
     public class MessageUpdate
     {
-        private readonly DynamoDBContext _dbContext;
+        private readonly IDynamoDBContext _dbContext;
 
-        public MessageUpdate(DynamoDBContext dbContext)
+        public MessageUpdate(IDynamoDBContext dbContext)
         {
             _dbContext = dbContext;
         }

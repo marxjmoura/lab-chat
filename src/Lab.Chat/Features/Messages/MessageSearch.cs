@@ -7,9 +7,9 @@ namespace Lab.Chat.Features.Messages
 {
     public class MessageSearch
     {
-        private readonly DynamoDBContext _dbContext;
+        private readonly IDynamoDBContext _dbContext;
 
-        public MessageSearch(DynamoDBContext dbContext)
+        public MessageSearch(IDynamoDBContext dbContext)
         {
             _dbContext = dbContext;
         }

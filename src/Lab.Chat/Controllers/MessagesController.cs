@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Net.Mime;
 using System.Threading.Tasks;
-using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Lab.Chat.Features.Messages;
 using Lab.Chat.Infrastructure.Database.DataModel.Messages;
@@ -18,11 +17,11 @@ namespace Lab.Chat.Controllers
     {
         const string UserId = "1A2B3C4D";
 
-        private readonly DynamoDBContext _dbContext;
+        private readonly IDynamoDBContext _dbContext;
 
-        public MessagesController(IAmazonDynamoDB dynamoDB)
+        public MessagesController(IDynamoDBContext dbContext)
         {
-            _dbContext = new DynamoDBContext(dynamoDB);
+            _dbContext = dbContext;
         }
 
         /// <summary>

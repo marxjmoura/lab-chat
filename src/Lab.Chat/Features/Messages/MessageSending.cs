@@ -8,9 +8,9 @@ namespace Lab.Chat.Features.Messages
 {
     public class MessageSending
     {
-        private readonly DynamoDBContext _dbContext;
+        private readonly IDynamoDBContext _dbContext;
 
-        public MessageSending(DynamoDBContext dbContext)
+        public MessageSending(IDynamoDBContext dbContext)
         {
             _dbContext = dbContext;
         }
